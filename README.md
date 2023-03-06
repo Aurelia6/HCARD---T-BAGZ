@@ -3,14 +3,15 @@ Finger Camera and Light
 
 This repository contains for now:
 - Camera_ESP32 folder
-- LEDS folder
+- LED_ARDUINO folder
+- LED_ESP32 folder
 - README file
 - SecretCode
 
-The Camera_ESP32 and LEDS folders are both composed of scripts that will be used to program the camera part and light part of our full device respectively. The LEDs script has some code already but it's just for testing, this can and need to be modified.
-2 different scripts are needed since we will be using 2 different boards to make them work.
-SecretCode is written in python and is a google colab file. It consists of the game we are going to play during the competition.
-Feel all free to create your branch so we can program on our own and then merge once the code is working.
+The Camera_ESP32 folder contains the code used to make the camera part work.
+The LED_ARDUINO and LED_ESP32 fodlers contains code for the light part. The LED_ESP32 contains simple code that works on the ESP32 board – which will not be used for the competition –, while the LED_ARDUINO contains the code used to make the light part work.
+SecretCode is written in python and is a google colab file. It consists of one game we are going to play during the competition.
 
+Feel all free to create your branch so we can program on our own and then merge once the code is working.
 
 Use GitFront to build the current repository on a sharable link.

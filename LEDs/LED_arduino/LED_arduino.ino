@@ -1,10 +1,9 @@
-// LAB8 - 讀取光敏電阻 (v2)
-
-int photocellPin = 2; // 光敏電阻 (photocell) 接在 anallog pin 2
+// Arduino LED for HCARD 
+int photocellPin = 2; // photoresistor is connected to anallog pin 2 (Input of the system)
 int photocellVal = 0; // photocell variable
-int minLight = 200;   // 最小光線門檻值
-int ledPin = 9;
-int ledState = 0; 
+int minLight = 200;   // minimum intensity of light 
+int ledPin = 9; //LED is connected to digital pin 9 (output of the system)
+int ledState = 0; //initialize the state of LED
 
 void setup() {
   pinMode(ledPin, OUTPUT); 
@@ -12,19 +11,19 @@ void setup() {
 }
 
 void loop() {
-  // 讀取光敏電阻並輸出到 Serial Port 
+  // Read the voltage across photoresistor (v2) and print it out through serial port
   photocellVal = analogRead(photocellPin);
   Serial.println(photocellVal);   
   
-  // 光線不足時打開 LED
+  // When the envirnment is dark, turn on the LED
   if (photocellVal < minLight && ledState == 0) {
-    digitalWrite(ledPin, HIGH); // turn on LED
+    digitalWrite(ledPin, HIGH); // turn on the LED
     ledState = 1;
   }
   
-  // 光線充足時關掉 LED
+  // When the environment is light, turn off the LED
   if (photocellVal > minLight && ledState == 1) {
-    digitalWrite(ledPin, LOW); // turn off LED
+    digitalWrite(ledPin, LOW); // turn off the LED
     ledState = 0;
   }  
   

@@ -1,30 +1,32 @@
-// Arduino LED for HCARD 
-int photocellPin = 2; // photoresistor is connected to anallog pin 2 (Input of the system)
+int photocellPin = 2; // (photocell) analog pin 2
 int photocellVal = 0; // photocell variable
-int minLight = 400;   // minimum intensity of light 
-int ledPin = 9; //LED is connected to digital pin 9 (output of the system)
-int ledState = 0; //initialize the state of LED
+int minLight = 650;   // Threshold
+int ledPin_1 = 9;
+int ledPin_2 = 8;
+int ledState = 0; 
 
 void setup() {
-  pinMode(ledPin, OUTPUT); 
-  //Serial.begin(9600);
-  Serial.begin(115200);
+  pinMode(ledPin_1, OUTPUT);
+  pinMode(ledPin_2, OUTPUT); 
+  Serial.begin(9600);
 }
 
 void loop() {
-  // Read the voltage across photoresistor (v2) and print it out through serial port
+  // Serial Port 
   photocellVal = analogRead(photocellPin);
   Serial.println(photocellVal);   
   
-  // When the envirnment is dark, turn on the LED
+  // LED
   if (photocellVal < minLight && ledState == 0) {
-    digitalWrite(ledPin, HIGH); // turn on the LED
+    digitalWrite(ledPin_1, HIGH); // turn on LED
+    digitalWrite(ledPin_2, HIGH);
     ledState = 1;
   }
   
-  // When the environment is light, turn off the LED
+  // LED
   if (photocellVal > minLight && ledState == 1) {
-    digitalWrite(ledPin, LOW); // turn off the LED
+    digitalWrite(ledPin_1, LOW); // turn off LED
+    digitalWrite(ledPin_2, LOW);
     ledState = 0;
   }  
   
